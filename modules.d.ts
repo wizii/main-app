@@ -1,1 +1,1 @@
-declare module "employees/table"
+declare module "employees/EmployeeTable"
