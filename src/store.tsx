@@ -1,9 +1,16 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-const useStore = create((set) => ({
-  count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  clear: () => set(() => ({ count: 0 })),
+type State = {
+  selectedCorporateId: string;
+}
+
+type Action = {
+  updateSelectedCorporateId: (selectedCorporateId: State['selectedCorporateId']) => void
+}
+
+const useStore = create<State & Action>((set) => ({
+  selectedCorporateId: '',
+  updateSelectedCorporateId: (selectedCorporateId) => set(() => ({ selectedCorporateId: selectedCorporateId })),
 }));
 
 export default useStore;

@@ -8,7 +8,11 @@ export default function NavBar() {
                     Employees
                 </Link>
             </div>
-            <div>Logout</div>
+            <div>
+                <Link href='/'>
+                    Home
+                </Link>
+            </div>
         </div>
     )
 }
