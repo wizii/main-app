@@ -9,9 +9,9 @@ const NextConfig = {
     const { isServer } = options;
     config.plugins.push(
       new NextFederationPlugin({
-        name: 'main',
+        name: 'mainApp',
         remotes: {
-          main: `main@http://localhost:3000/_next/static/${
+          mainApp: `mainApp@http://localhost:3000/_next/static/${
             isServer ? 'ssr' : 'chunks'
           }/primaryEntry.js`,
           employees: `employees@http://localhost:3001/_next/static/${
@@ -19,17 +19,19 @@ const NextConfig = {
           }/primaryEntry.js`,
         },
         filename:'static/chunks/primaryEntry.js',
-        // exposes: {
-        //   './store': './src/store.tsx'
-        // },
+        exposes: {
+          './Store': './src/store.tsx'
+        },
         // shared: {
         //   ...deps,
         //   react: {
         //     singleton: true,
+        //     eager: true,
         //     requiredVersion: deps.react,
         //   },
         //   "react-dom": {
         //     singleton: true,
+        //     eager: true,
         //     requiredVersion: deps["react-dom"],
         //   },
         // },

@@ -1,23 +1,16 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import useStore from "mainApp/Store"
 
 const EmployeeTable = dynamic(() => import("employees/EmployeeTable"));
+// const useStore = dynamic(() => import("mainApp/Store"));
 
 export default function Employees() {
-    const [title, setTitle] = useState('default title');
-
-    function changeTitle() {
-        if(title == 'title is changed') {
-            setTitle('back to default')
-        } else {
-            setTitle('title is changed')
-        }
-    }
+    const {count, increment} = useStore();
 
     return (
         <div>
-            <button onClick={changeTitle}>Change title</button>
-            <EmployeeTable title={title}></EmployeeTable>
+            <button onClick={increment}>Change Count</button>
+            <EmployeeTable></EmployeeTable>
         </div>
     )
 }
